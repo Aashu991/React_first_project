@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import NewsItem from './NewsItem'
-import Spiner from './spiner'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import NewsItem from './NewsItem';
+import Spiner from './spiner';
+import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
@@ -11,13 +11,13 @@ class News extends Component {
         country: "in",
         pageSize: 12,
         category: "science"
-    }
+    };
 
     static propTypes = {
         country: PropTypes.string,
         pageSize: PropTypes.number,
         category: PropTypes.string
-    }
+    };
 
     constructor(props) {
         super(props)
@@ -27,13 +27,13 @@ class News extends Component {
             loading: false,
             page: 1,
             totalResults: 0
-        }
+        };
         document.title = `${this.captlize(this.props.category)}-News`;
-    }
+    };
 
     captlize = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+    };
 
     async updateNews() {
         this.props.setProgress(10);
@@ -54,12 +54,12 @@ class News extends Component {
 
     async componentDidMount() {
         this.updateNews();
-    }
+    };
 
     fetchMoreData = async () => {
         this.setState({
             page: this.state.page + 1,
-        })
+        });
         let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=6d2dfe158e9649d99a3b598c59e71244&page=${this.state.page}&pageSize=${this.props.pageSize}`;
         let data = await fetch(url);
         let parcData = await data.json();
@@ -68,7 +68,7 @@ class News extends Component {
             totalResults: parcData.totalResults,
             loading: false
         });
-    }
+    };
 
     render() {
         return (
@@ -91,7 +91,7 @@ class News extends Component {
                                         <NewsItem title={element.title} description={element.description} urlImage={element.urlToImage} Newsurl={element.url} author={element.author} date={element.publishedAt} />
                                     </div>
                                 )
-                            })}
+                            })};
                         </div>
                     </div>
                 </InfiniteScroll>
@@ -101,7 +101,7 @@ class News extends Component {
                 </div> */}
             </div>
         )
-    }
-}
+    };
+};
 
-export default News
+export default News;

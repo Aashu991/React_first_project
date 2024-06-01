@@ -1,23 +1,23 @@
-import React, { Component } from 'react'
-import News from './components/News'
-import NavBar from './components/NavBar'
+import React, { Component } from 'react';
+import News from './components/News';
+import NavBar from './components/NavBar';
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
-import LoadingBar from 'react-top-loading-bar'
+import LoadingBar from 'react-top-loading-bar';
 
 class App extends Component {
 
   PageSize = 12;
   state = {
      progress: 0
-  }
+  };
 
   setProgress =(progress) =>{
        this.setState({progress: progress})
-  }
+  };
   render() {
     return (
       <div>
@@ -44,4 +44,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default App;
